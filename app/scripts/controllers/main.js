@@ -28,14 +28,13 @@ angular.module('coordinatesSelectorApp')
    				//var image = $socument.
    				var allCoordinateData = {imageWidth: imageWidth, imageHeight: imageHeight, data: {}}
 	
-   				var count = 0
-   				for (var annotation of annotations) {
-   					count = count + 1
+   				for (i = 0; i < annotations.length; i++) {
+   					var annotation = annotations[i]
 	
    					var relativeData = {relativeX: null, relativeY: null, relativeWidth: null, relativeHeight: null}
    					var pixelData = {x: null, y: null, width: null, height: null}
 	
-   					var name = annotation.text.length > 0 ? annotation.text : "Annotation "+count
+   					var name = annotation.text.length > 0 ? annotation.text : "Annotation "+i
    					var geometry = annotation.shapes[0].geometry
 	
    					relativeData.relativeX = geometry.x.toFixed(2)
