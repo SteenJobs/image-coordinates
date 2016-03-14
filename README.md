@@ -1,5 +1,4 @@
 # Image Coordinates Selector
------
 
 ### Use
 
