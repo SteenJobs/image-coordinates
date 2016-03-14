@@ -1,0 +1,74 @@
+<div class="container-fluid">
+  <div class="row">
+	<div class="col-md-10 col-md-offset-1">
+	  <div class="page-header">
+		<h1>Instructions</h1>
+	  </div>
+	  <h4>
+		Upload your image for the 'image' and 'data' tabs to appear.
+	  </h4>
+	  <br>
+	  <p>
+		After uploading an image, click and drag on the image display to create boxed areas (as many as you want), and then click the 'Calculate' button to calculate and display the coordinate data (x,y,w,h) for each annotation.
+	  </p>
+	  <p>
+		The coordinate data will appear under the 'Data' tab after your annotations' data is calcuated, and the raw JSON data will appear under the 'JSON' tab for your programming needs.
+	  </p>
+	  <br>
+	  <div>
+		<input type='file' ngf-select ngf-min-height="1" ng-model="photo"><br>
+		</div>
+		<div>
+		<button ng-click="showCoordinates(); active=1" class="btn btn-success" style="margin-bottom:15px;">Calculate</button>
+		</div>
+
+	  </div>
+	  
+	</div>
+
+	<div ng-show="photo">
+	<hr>
+	<div class="row">
+	  	<div class="col-md-12">
+	  		<uib-tabset justified="true" active="active">
+    			<uib-tab index="0" heading="{{tabs[0].title}}" active="tabs[0].active">
+    				<div class="text-center center-block">
+						<br>
+			  			<img ngf-src="photo" annotorious-annotate>
+					</div>
+    			</uib-tab>
+    			<uib-tab index="1" heading="{{tabs[1].title}}" active="tabs[1].active" disable="tabs[1].disabled">
+    				<div class="row">
+					  	<div class="col-md-4 col-md-offset-4">
+							<div ng-show="points">
+						  		<p style="margin-top:20px;">Image Width: {{points.imageWidth}}, Image Height: {{points.imageHeight}}</p>
+						  		<div ng-show="points.data">
+							  		<div ng-repeat="(name, data) in points.data">
+										<p><strong>{{name}}:</strong></p>
+										<p ng-show="data.relativeData || data.pixelData" style="padding-left: 25px;">
+										  Relative Data (x,y,w,h): {{data.relativeData.relativeX}}%, {{data.relativeData.relativeY}}%, {{data.relativeData.relativeWidth}}%, {{data.relativeData.relativeHeight}}%<br>
+										  Pixel Data (x,y,w,h): {{data.pixelData.x}}, {{data.pixelData.y}}, {{data.pixelData.width}}, {{data.pixelData.height}}
+										</p>
+							  		</div>
+								</div>
+							</div>
+					  	</div>
+					</div>    
+    			</uib-tab>
+    			<uib-tab index="2" heading="{{tabs[2].title}}" active="tabs[2].active" disable="tabs[2].disabled">
+					<div class="row">
+						<div class="col-md-12">
+							<div ng-show="points" class="json">
+				  				<p style="margin-top: 20px;">{{points}}</p>
+							</div>
+							<hr>
+			  			</div>
+					</div>	  
+    			</uib-tab>
+  			</uib-tabset>
+	  		
+	  	</div>
+	</div>
+</div>
+
+</div>
