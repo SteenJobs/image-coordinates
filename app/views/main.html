@@ -19,7 +19,7 @@
 		<input type='file' ngf-select ngf-min-height="1" ng-model="photo"><br>
 		</div>
 		<div>
-		<button ng-click="showCoordinates(); active=1" class="btn btn-success" style="margin-bottom:15px;">Calculate</button>
+		<button ng-show="photo" ng-click="showCoordinates(); active=1" class="btn btn-success" style="margin-bottom:15px;">Calculate</button>
 		</div>
 
 	  </div>
