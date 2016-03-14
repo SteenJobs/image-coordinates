@@ -39,11 +39,13 @@
     "node": ">=0.10.0"
   },
   "scripts": {
+    "postinstall": "bower install",
     "test": "karma start test/karma.conf.js"
   },
   "dependencies": {
     "express": "^4.13.4",
     "gzippo": "^0.2.0",
-    "morgan": "^1.7.0"
+    "morgan": "^1.7.0",
+    "bower": "^1.7.7"
   }
 }
